@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     "EcommerceWebAPI.apps.payment",
     "EcommerceWebAPI.apps.user",
     "EcommerceWebAPI.apps.product",
+    "rest_framework",
+    "drf_yasg",
 ]
 
 MIDDLEWARE = [
@@ -125,3 +127,5 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+AUTH_USER_MODEL = "user.CustomUser"
