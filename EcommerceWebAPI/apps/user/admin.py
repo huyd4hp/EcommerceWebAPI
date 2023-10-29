@@ -4,7 +4,7 @@ from EcommerceWebAPI.apps.user.models import CustomUser, ContactUser
 
 # Register your models here.
 class UserField(admin.ModelAdmin):
-    list_display = ["username", "first_name", "last_name"]
+    list_display = ["username", "first_name", "last_name", "is_seller"]
 
 
 admin.site.register(CustomUser, UserField)
