@@ -1,7 +1,12 @@
 from django.shortcuts import render
 from EcommerceWebAPI.apps.order.models import Cart, DetailCart
 from rest_framework.decorators import action
-from EcommerceWebAPI.apps.order.serializers import CartSerializer, CartDetailSerializer
+from EcommerceWebAPI.apps.order.serializers import (
+    CartSerializer,
+    CartDetailSerializer,
+    OrderSerializer,
+    OrderDetailSerializer,
+)
 from rest_framework import viewsets
 from django.db.models import Q
 from rest_framework.response import Response
@@ -50,3 +55,14 @@ class CartViewSet(viewsets.ModelViewSet):
             },
             status=status.HTTP_200_OK,
         )
+
+
+class OrderViewSet(viewsets.ModelViewSet):
+    queryset = Order.objects.all()
+
+    def get_serializer_class(self):
+        if self.action == "list":
+            return OrderSerializer
+        elif self.action == "retrieve":
+            return OrderDetailSerializer
+        return OrderSerializer
